@@ -8,11 +8,18 @@
 </head>
 <body>
     <div class="container">
-        <button id="startBtn">Enter the Matrix</button>
+        <button id="startBtn">Surprise</button>
         <canvas id="matrixCanvas"></canvas>
-        <div id="message" class="hidden">You are now inside the Matrix...</div>
+        <div id="message" class="hidden"></div>
         <button id="exitBtn" class="hidden">Escape the Matrix</button>
     </div>
+    <div id="customAlert" class="alert-box hidden">
+        <div class="alert-content">
+            <h2>Alert!</h2>
+            <p>Your system is being attacked!</p>
+            <button id="closeAlert">OK</button>
+        </div>
+    </div>       
     <audio id="hackingSound" src="hacking.mp3"></audio>
     <script src="script.js"></script>
 </body>
