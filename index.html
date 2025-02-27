@@ -3,24 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrix Rain Effect</title>
+    <title>Futuristic Landing Page</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
+
     <div class="container">
-        <button id="startBtn">Surprise</button>
-        <canvas id="matrixCanvas"></canvas>
-        <div id="message" class="hidden"></div>
-        <button id="exitBtn" class="hidden">Escape the Matrix</button>
+        <header>
+            <div class="logo">Future<span>Tech</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div class="content">
+                <h1 class="title">Welcome to the Future</h1>
+                <p class="subtitle">Experience the next-gen technology with us.</p>
+                <a href="#" class="btn">Surprise</a>
+            </div>
+            <div id="cube-container"></div>
+        </main>
     </div>
-    <div id="customAlert" class="alert-box hidden">
-        <div class="alert-content">
-            <h2>Alert!</h2>
-            <p>Your system is being attacked!</p>
-            <button id="closeAlert">OK</button>
-        </div>
-    </div>       
-    <audio id="hackingSound" src="hacking.mp3"></audio>
+
+    <!-- Hidden Section -->
+    <div class="hidden-section" style="display: none;">
+        <h2>Explore the Future</h2>
+        <p>Step into the future and explore cutting-edge innovations</p>
+        <div id="extra-content"></div>
+    </div>
+
     <script src="script.js"></script>
+
 </body>
 </html>
