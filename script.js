@@ -1,3 +1,4 @@
+// Matrix Rain Effect Canvas
 const canvas = document.getElementById("matrixCanvas");
 const ctx = canvas.getContext("2d");
 const btn = document.getElementById("startBtn");
@@ -34,8 +35,31 @@ function drawMatrixRain() {
         drops[i]++;
     }
 }
+
+// Function to detect Windows version accurately
+function getWindowsVersion() {
+    const userAgent = navigator.userAgent;
+    if (userAgent.includes("Windows NT 10.0")) {
+        if (navigator.userAgentData && navigator.userAgentData.platform === "Windows") {
+            return "Windows 11";
+        }
+        return "Windows 10";
+    }
+    return "Unknown OS";
+}
+
+// Function to detect browser properly
+function getBrowserName() {
+    const userAgent = navigator.userAgent;
+    if (/Edg/i.test(userAgent)) return "Microsoft Edge";
+    if (/Chrome/i.test(userAgent) && !/Edg/i.test(userAgent)) return "Google Chrome";
+    if (/Brave/i.test(navigator.userAgentData?.brands?.map(b => b.brand).join(" "))) return "Brave";
+    if (/Firefox/i.test(userAgent)) return "Mozilla Firefox";
+    if (/Safari/i.test(userAgent) && !/Chrome/i.test(userAgent)) return "Safari";
+    return "Unknown Browser";
+}
+
 // Function to create typewriter effect
-// Function to create typewriter effect with HTML support
 function typeWriterEffect(element, htmlContent, speed = 50, callback = null) {
     element.innerHTML = ""; // Clear existing content
     let index = 0;
@@ -56,7 +80,7 @@ function typeWriterEffect(element, htmlContent, speed = 50, callback = null) {
             element.innerHTML = tempText;
             setTimeout(type, speed);
         } else if (callback) {
-            setTimeout(callback, 500); // Call the callback after completion
+            setTimeout(callback, 500);
         }
     }
     type();
@@ -65,7 +89,7 @@ function typeWriterEffect(element, htmlContent, speed = 50, callback = null) {
 // Modify the button click event to use the typewriter effect
 btn.addEventListener("click", () => {
     alertBox.classList.remove("hidden"); 
-    btn.style.display = "none"; // Hide button
+    btn.style.display = "none"; 
 
     canvas.style.display = "block";  
     setInterval(drawMatrixRain, 50);
@@ -75,8 +99,8 @@ btn.addEventListener("click", () => {
         alertBox.classList.add("hidden");
 
         // Fetch system details
-        const os = navigator.platform;
-        const browser = navigator.userAgent;
+        const os = getWindowsVersion();
+        const browser = getBrowserName();
         const screenWidth = window.screen.width;
         const screenHeight = window.screen.height;
         const currentTime = new Date().toLocaleString();
@@ -84,7 +108,7 @@ btn.addEventListener("click", () => {
         const systemMessage = `
             <strong>System Compromised Successfully!</strong><br><br>
             <b>OS:</b> ${os}<br>
-            <b>Browser:</b> ${browser.split(') ')[0]})<br>
+            <b>Browser:</b> ${browser}<br>
             <b>Screen Resolution:</b> ${screenWidth} x ${screenHeight}<br>
             <b>Time:</b> ${currentTime}
         `;
@@ -93,10 +117,10 @@ btn.addEventListener("click", () => {
 
         // Apply typewriter effect
         typeWriterEffect(message, systemMessage, 50, () => {
-            exitBtn.classList.remove("hidden"); // Show exit button after text completes
+            exitBtn.classList.remove("hidden");
         });
 
-    }, 2000); // Alert box stays for 2 seconds
+    }, 2000);
 });
 
 // Cursor effect function
@@ -120,7 +144,7 @@ alertBox.classList.add("hidden");
 
 // Close alert when clicking OK
 closeAlert.addEventListener("click", () => {
-    alertBox.classList.add("hidden"); // Hide alert box
+    alertBox.classList.add("hidden");
 });
 
 // Exit button event
